@@ -6,9 +6,9 @@ filesequence - A parsing object representing sequential files for fileseq.
 import os
 from glob import iglob
 from itertools import imap, ifilter
-from fileseq.exceptions import ParseException, FileSeqException
-from fileseq.constants import PAD_MAP, DISK_RE, SPLIT_RE
-from fileseq.frameset import FrameSet
+from exceptions import ParseException, FileSeqException
+from constants import PAD_MAP, DISK_RE, SPLIT_RE
+from frameset import FrameSet
 
 class FileSequence(object):
     """:class:`FileSequence` represents an ordered sequence of files.

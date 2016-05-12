@@ -25,9 +25,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
-from fileseq.exceptions import ParseException, FileSeqException
-from fileseq.frameset import FrameSet
-from fileseq.filesequence import FileSequence
+from exceptions import ParseException, FileSeqException
+from frameset import FrameSet
+from filesequence import FileSequence
 
 padFrameRange = FrameSet.padFrameRange
 framesToFrameRange = FrameSet.framesToFrameRange

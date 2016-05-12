@@ -4,9 +4,9 @@ frameset - A set-like object representing a frame range for fileseq.
 """
 
 from collections import Set, Sequence
-from fileseq.utils import xfrange, unique, pad
-from fileseq.constants import PAD_MAP, FRANGE_RE, PAD_RE
-from fileseq.exceptions import ParseException
+from utils import xfrange, unique, pad
+from constants import PAD_MAP, FRANGE_RE, PAD_RE
+from exceptions import ParseException
 
 class FrameSet(Set):
     """
