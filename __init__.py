@@ -28,12 +28,3 @@ THE SOFTWARE.
 from fileseq.exceptions import ParseException, FileSeqException
 from fileseq.frameset import FrameSet
 from fileseq.filesequence import FileSequence
-
-padFrameRange = FrameSet.padFrameRange
-framesToFrameRange = FrameSet.framesToFrameRange
-
-getPaddingChars = FileSequence.getPaddingChars
-getPaddingNum = FileSequence.getPaddingNum
-findSequencesInList = FileSequence.findSequencesInList
-findSequenceOnDisk = FileSequence.findSequenceOnDisk
-findSequencesOnDisk = FileSequence.findSequencesOnDisk
