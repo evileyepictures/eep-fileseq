@@ -111,6 +111,16 @@ class FileSequence(object):
         """
         return self._dir
 
+    def path(self):
+        """
+        :returns: (str) Templated path to the sequence
+        """
+        padding_num = self.getPaddingNum(self.padding())
+        assert(padding_num < 10)
+        path = ''.join([self.dirname(), self.basename(), '%0{}d'.format(padding_num), self.extension()])
+
+        return path
+
     def setDirname(self, dirname):
         """
         Set a new directory name for the sequence.
