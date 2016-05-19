@@ -4,11 +4,13 @@ filesequence - A parsing object representing sequential files for fileseq.
 """
 
 import os
+import copy
 from glob import iglob
 from itertools import imap, ifilter
 from exceptions import ParseException, FileSeqException
 from constants import PAD_MAP, DISK_RE, SPLIT_RE
 from frameset import FrameSet
+from pathlib import Path
 
 class FileSequence(object):
     """:class:`FileSequence` represents an ordered sequence of files.
@@ -89,6 +91,43 @@ class FileSequence(object):
             range=self.frameRange() or "",
             inverted=self.invertedFrameRange() or "",
             dirname=self.dirname())
+
+    def rename(self, basename, padding, extension, debug=False):
+        """
+        Rename sequence files on disc
+        :param basename: Sequence base name with separator included e.g. 'name.'
+        :param padding: Padding digits e.g. '@@@', '#'
+        :param extension: Image extension e.g. '.dpx', '.jpg'
+        :param debug: If True just print the result without renaming files
+        """
+
+        new_seq = copy.copy(self) # shallow copy
+
+        new_seq.setBasename(basename)
+        new_seq.setPadding(padding)
+        new_seq.setExtension(extension)
+
+        for i in range(self.start(), self.end() + 1):
+            old_path = self.frame(i)
+            new_path = new_seq.frame(i)
+
+            if debug:
+                print 'Renaming %s to %s' % (old_path, new_path)
+            else:
+                os.rename(old_path, new_path)
+
+    def rename_dir(self, new_name):
+        """
+        Rename parent directory of the sequence
+        :param new_name: (str) New directory name
+        """
+        old_dir = Path(self.dirname())
+        new_dir = old_dir.with_name(new_name)
+        if not new_dir.exists():
+            old_dir.rename(new_dir)
+        else:
+            print old_dir, 'already exists'
+
 
     def split(self):
         """
