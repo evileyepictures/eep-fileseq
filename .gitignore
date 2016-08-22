@@ -60,3 +60,6 @@ atlassian-ide-plugin.xml
 # Line Profiler Logs
 *.py.prof
 *.py.lprof
+
+# Synology files
+@eaDir
